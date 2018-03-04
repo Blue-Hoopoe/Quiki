@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>quiki</title>
+    <script src="../vendor/jquery-3.3.1.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style/quiki-popup.css">
+</head>
+
+<body id="popup">
+    <div class="top">
+        <img id="logo" src="../icons/icon_512.png" alt="" />
+    </div>
+    <div class="main">
+
+        <div class="features component">
+            <a class="default d-block item" href="https://diki.pl?origin=quiki" target='_newtab'>
+                <i class="material-icons">&#xE867;</i>&nbsp;
+                Odwiedź diki.pl
+            </a>
+            <a class="default d-block item" href="https://www.diki.pl/dictionary/word-of-the-day?origin=quiki" target='_newtab'>
+                <i class="material-icons">&#xE8DF;</i>&nbsp;
+                Słówko dnia
+            </a>
+            <form class="item" target='_newtab' action="https://www.diki.pl/slownik-angielskiego">
+                <input type="text" name="q" autocomplete="off" autofocus placeholder="Wpisz polskie hasło" />
+                <input type="text" name="origin" hidden value="quiki" />
+                <input type="submit" hidden/>
+            </form>
+        </div>
+
+        <div class="settings component">
+            <div class="item no-selection switch-holder">
+                Szukaj definicji przy podwójnym kliknięciu
+                <label class="switch">
+                    <input id="settings-double-click" type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </div>
+
+    </div>
+    <script src="scripts/quiki-popup.js"></script>
+</body>
+
+</html>

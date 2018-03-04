@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&subset=latin-ext');
+html,
+body {
+    padding: 0;
+    margin: 0;
+    min-width: 200px;
+    min-height: 150px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    color: #333;
+}
+
+body {
+    border-top: 4px solid #c30407;
+}
+
+a,
+a:focus,
+a:hover,
+a:link,
+a:visited {
+    text-decoration: none;
+    color: inherit;
+    transition: color .3s ease-in-out;
+}
+
+a.default:hover {
+    color: #c30407;
+}
+
+.d-block {
+    display: block;
+}
+
+.material-icons {
+    font-size: inherit;
+    position: relative;
+    top: 2px;
+}
+
+#logo {
+    max-width: 50%;
+    max-height: 50px;
+    display: block;
+    margin: auto;
+    padding: 5px;
+}
+
+.component {
+    padding: 5px 10px;
+    border-top: 1px solid rgba(238, 238, 238, 0.5);
+}
+
+.component>.item {
+    padding: 5px 0;
+    box-sizing: border-box;
+}
+
+.settings {
+    color: #666;
+}
+
+.no-selection {
+    user-select: none;
+}
+
+.switch {
+    float: right;
+    position: relative;
+    width: 31px;
+    height: 18px;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .3s;
+    transition: .3s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 10px;
+    width: 10px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .3s;
+}
+
+input:checked+.slider {
+    background-color: #c30407;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #c30407;
+}
+
+input:checked+.slider:before {
+    transform: translateX(12px);
+}
+
+.slider.round {
+    border-radius: 8px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.switch-holder {
+    margin-right: 40px;
+}
+
+.switch-holder>.switch {
+    margin-right: -40px;
+}
+
+input[type='text'] {
+    border: 2px solid #c30407;
+    padding: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input[type='text']::placeholder {
+    opacity: 0.5;
+}
+
+*:focus {
+    outline: none;
+}
