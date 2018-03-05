@@ -8,7 +8,7 @@
     <title>quiki</title>
     <script src="../vendor/jquery-3.3.1.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="style/quiki-popup.css">
+    <link rel="stylesheet" href="../styles/quiki-popup.css">
 </head>
 
 <body id="popup">
@@ -19,10 +19,10 @@
 
         <div class="features component">
             <a class="default d-block item" href="https://diki.pl?origin=quiki" target='_newtab'>
-                <i class="material-icons">&#xE867;</i>&nbsp; Odwiedź diki.pl
+                <i class="material-icons">&#xE867;</i>&nbsp;&nbsp;Odwiedź diki.pl
             </a>
             <a class="default d-block item" href="https://www.diki.pl/dictionary/word-of-the-day?origin=quiki" target='_newtab'>
-                <i class="material-icons">&#xE8DF;</i>&nbsp; Słówko dnia
+                <i class="material-icons">&#xE8DF;</i>&nbsp;&nbsp;Słówko dnia
             </a>
             <form class="item" target='_newtab' action="https://www.diki.pl/slownik-angielskiego">
                 <input type="text" name="q" autocomplete="off" autofocus placeholder="Wpisz polskie hasło" />
@@ -43,12 +43,23 @@
                             </label>
                         </td>
                     </tr>
+                    <!--
+                    <tr>
+                        <td class="label">Pokazuj okno kontekstowe przy zaznaczeniu</td>
+                        <td class="option">
+                            <label class="switch">
+                                <input id="settings-content-menu" type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                        </td>
+                    </tr>
+                    -->
                 </tbody>
             </table>
         </div>
 
     </div>
-    <script src="scripts/quiki-popup.js"></script>
+    <script src="../scripts/quiki-popup.js"></script>
 </body>
 
 </html>

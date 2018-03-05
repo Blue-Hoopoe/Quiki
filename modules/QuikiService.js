@@ -23,10 +23,9 @@ function QuikiService() {
     }
 
     // Checks local version and local storage.
-    var qsm = this.qsm;
-    var storageSchema = qsm.get('storage-schema');
+    var storageSchema = this.qsm.get('storage-schema');
     if (!storageSchema || storageSchema != quikiStorageSchema) {
-        qsm.clear();
+        this.qsm.clear();
         this.setDefaultStorage();
     }
 

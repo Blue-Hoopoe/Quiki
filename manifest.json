@@ -32,7 +32,7 @@
             "content-script.js"
         ],
         "css": [
-            "pages/style/quiki-modal.css"
+            "styles/quiki-modal.css"
         ],
         "run_at": "document_start"
     }],

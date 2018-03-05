@@ -8,6 +8,7 @@ body {
     font-family: 'Open Sans', sans-serif;
     font-size: 13px;
     color: #333;
+    line-height: 1.3;
 }
 
 body {
@@ -58,6 +59,7 @@ a.default:hover {
 
 .settings {
     color: #666;
+    font-size: 11px;
 }
 
 table.setting-table{
