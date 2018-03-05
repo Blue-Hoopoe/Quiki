@@ -1,9 +1,16 @@
 {
     "manifest_version": 2,
     "name": "quiki",
+    "short_name": "quiki",
+    "homepage_url": "https://github.com/Blue-Hoopoe/quiki",
     "description": "Nieoficjalny dodatek korzystający z angielsko-polskiego słownika diki.pl. Uwaga: jest to wersja alpha.",
-    "version": "0.1.27",
-    "version_name": "0.1.21 (alpha)",
+    "version": "0.1.28",
+    "version_name": "0.1.28 (alpha)",
+    "author": [{
+        "name": "Maciej Dudek",
+        "a.k.a.": "Blue-Hoopoe",
+        "email": "quiki.extension@gmail.com"
+    }],
     "icons": {
         "16": "icons/icon_16.png",
         "32": "icons/icon_32.png",
@@ -36,5 +43,13 @@
         ],
         "run_at": "document_start"
     }],
-    "permissions": []
+    "permissions": [],
+    "commands": {
+        "_execute_browser_action": {
+            "suggested_key": {
+                "default": "Ctrl+Q"
+            },
+            "description": "Toggle feature foo"
+        }
+    }
 }
