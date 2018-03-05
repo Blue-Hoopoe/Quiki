@@ -60,6 +60,27 @@ a.default:hover {
     color: #666;
 }
 
+table.setting-table{
+    width: 100%;
+}
+
+table.setting-table > tbody > tr > td{
+    padding-top: 10px;
+}
+
+table.setting-table > tbody > tr:first-child > td{
+    padding-top: 0;
+}
+
+table.setting-table td.option{
+    padding-left: 10px;
+    width: 1px;
+}
+
+table.setting-table tr{
+    padding-top: 50px;
+}
+
 .no-selection {
     user-select: none;
 }
@@ -116,14 +137,6 @@ input:checked+.slider:before {
 
 .slider.round:before {
     border-radius: 50%;
-}
-
-.switch-holder {
-    margin-right: 40px;
-}
-
-.switch-holder>.switch {
-    margin-right: -40px;
 }
 
 input[type='text'] {
