@@ -13,9 +13,10 @@ function QuikiClient() {
 
         // Check if global modal setting is on.
         chrome.runtime.sendMessage({
-            action: "get-setting-modal"
+            action: "get",
+            quikiId: "setting-doubleclick-modal"
         }, function (response) {
-            if(response.value == 'true'){
+            if((String(response.value) == "true")){
                 self.createPopup(word, event);
             }
         });

@@ -59,7 +59,7 @@ a.default:hover {
 
 .settings {
     color: #666;
-    font-size: 11px;
+    font-size: 10px;
 }
 
 table.setting-table{
@@ -90,7 +90,7 @@ table.setting-table tr{
 .switch {
     float: right;
     position: relative;
-    width: 31px;
+    width: 30px;
     height: 18px;
 }
 

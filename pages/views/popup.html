@@ -6,15 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>quiki</title>
-    <script src="../vendor/jquery-3.3.1.min.js"></script>
+
+    <!-- vendor scripts -->
+    <script src="../../vendor/jquery-3.3.1.min.js"></script>
+    <script src="../../vendor/rivets.bundled-0.9.3.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="../styles/quiki-popup.css">
+
+    <!-- custom resources -->
+    <link rel="stylesheet" href="../../styles/quiki-popup.css">
+    <script src="../../quiki-framework/modules/QuikiInput.js"></script>
+
 </head>
 
 <body id="popup">
+
     <div class="top">
-        <img id="logo" src="../icons/icon_512.png" alt="" />
+        <img id="logo" src="../../icons/icon_512.png" alt="" />
     </div>
+
     <div class="main">
 
         <div class="features component">
@@ -34,32 +43,26 @@
         <div class="settings component">
             <table class="item setting-table">
                 <tbody>
-                    <tr>
-                        <td class="label">Szukaj definicji przy podwójnym kliknięciu</td>
+
+                    <tr rv-each-option="settings">
+                        <td class="label">{ option.label }</td>
                         <td class="option">
                             <label class="switch">
-                                <input id="settings-double-click" type="checkbox">
+                                <input id="settings-double-click" type="checkbox" rv-checked="option.value" rv-on-change="option.setValue">
                                 <span class="slider round"></span>
                             </label>
                         </td>
                     </tr>
-                    <!--
-                    <tr>
-                        <td class="label">Pokazuj okno kontekstowe przy zaznaczeniu</td>
-                        <td class="option">
-                            <label class="switch">
-                                <input id="settings-content-menu" type="checkbox">
-                                <span class="slider round"></span>
-                            </label>
-                        </td>
-                    </tr>
-                    -->
+
                 </tbody>
             </table>
         </div>
 
     </div>
-    <script src="../scripts/quiki-popup.js"></script>
+
+    <!-- rivets.js controller -->
+    <script src="../controllers/popup.js"></script>
+
 </body>
 
 </html>
