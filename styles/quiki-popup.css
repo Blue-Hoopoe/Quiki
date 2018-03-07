@@ -75,7 +75,7 @@ table.setting-table > tbody > tr:first-child > td{
 }
 
 table.setting-table td.option{
-    padding-left: 10px;
+    padding-right: 10px;
     width: 1px;
 }
 
@@ -119,6 +119,26 @@ table.setting-table tr{
     bottom: 4px;
     background-color: white;
     transition: .3s;
+}
+
+button[type='submit']{
+    cursor: pointer;
+}
+
+.input-group{
+    display: flex;
+    flex-direction: row;
+}
+
+.input-group button{
+    border: none;
+    background-color: #c30407;
+    color: #fff;
+    padding: 0 5px;
+}
+
+.input-group .material-icons{
+    font-size: 1.3em;
 }
 
 input:checked+.slider {

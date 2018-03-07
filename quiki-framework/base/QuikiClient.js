@@ -25,7 +25,8 @@ function QuikiClient() {
     // Creates new modal.
     this.createModal = function (word, event) {
         $('html').addClass('quiki-presenting');
-        $('<div id="quiki-modal"><div id="quiki-iframe-wrap"><div id="quiki-x"><span>&times;</span> Zamknij okno</div><iframe src="https://www.diki.pl/slownik-angielskiego?q=' + word + '&origin=quiki" frameborder="0"></iframe> </div><div id="quiki-poke"></div></div>').appendTo('body');
+        var $modal = $('<div id="quiki-modal"><div id="quiki-iframe-wrap"><div id="quiki-x"><span>&times;</span> Zamknij okno</div><iframe src="https://www.diki.pl/slownik-angielskiego?q=' + word + '&origin=quiki" frameborder="0"></iframe></div><div id="quiki-poke"></div></div>').appendTo('body');
+        var $iframe = $modal.find('iframe').first();
         $('#quiki-poke, #quiki-x').on('click', function () {
             self.removeModal();
         });

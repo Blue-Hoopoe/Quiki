@@ -33,10 +33,14 @@
             <a class="default d-block item" href="https://www.diki.pl/dictionary/word-of-the-day?origin=quiki" target='_newtab'>
                 <i class="material-icons">&#xE8DF;</i>&nbsp;&nbsp;Słówko dnia
             </a>
-            <form class="item" target='_newtab' action="https://www.diki.pl/slownik-angielskiego">
-                <input type="text" name="q" autocomplete="off" autofocus placeholder="Wpisz polskie hasło" />
+            <form class="item default-form" target='_newtab' action="https://www.diki.pl/slownik-angielskiego">
+                <div class="input-group">
+                    <input type="text" name="q" autocomplete="off" autofocus placeholder="Wpisz polskie hasło" />
+                    <button id="submit-button" type="submit">
+                        <i class="material-icons">&#xE8B6;</i>
+                    </button>
+                </div>
                 <input type="text" name="origin" hidden value="quiki" />
-                <input type="submit" hidden/>
             </form>
         </div>
 
@@ -45,13 +49,13 @@
                 <tbody>
 
                     <tr rv-each-option="settings">
-                        <td class="label">{ option.label }</td>
                         <td class="option">
                             <label class="switch">
                                 <input id="settings-double-click" type="checkbox" rv-checked="option.value" rv-on-change="option.setValue">
                                 <span class="slider round"></span>
                             </label>
                         </td>
+                        <td class="label">{ option.label }</td>
                     </tr>
 
                 </tbody>
