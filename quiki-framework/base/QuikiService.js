@@ -30,6 +30,13 @@ function QuikiService() {
         this.setDefaultStorage();
     }
 
+    // Context menu on selection function handler.
+    this.searchOnDiki = function (event) {
+        chrome.tabs.create({
+            url: "https://www.diki.pl/slownik-angielskiego?origin=quiki&q=" + event.selectionText,
+        });
+    }
+
     // Creating router functions.
     this.getLocalValue = function (quikiId) {
         return self.qsm.get(quikiId);
@@ -60,6 +67,13 @@ function QuikiService() {
         sendResponse(
             self.route(request, sender)
         );
+    });
+
+    // Creating context menu.
+    chrome.contextMenus.create({
+        "title": "Wyszukaj \"%s\" na diki.pl",
+        "contexts": ["selection"],
+        "onclick": self.searchOnDiki
     });
 
 }

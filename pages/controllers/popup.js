@@ -1,3 +1,6 @@
+'use strict';
+
+// Bind all data to the view.
 rivets.bind($('#popup'), {
     settings: [
         new QuikiInput({
