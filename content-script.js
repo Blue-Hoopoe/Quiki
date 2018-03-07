@@ -8,7 +8,7 @@ if (window.location.host != 'www.diki.pl'){
 
     // Create event listener on double click.
     $("html").on('dblclick', function(event) {
-        quikiClient.considerPopup(event);
+        quikiClient.considerModal(event);
     });
 
 }
