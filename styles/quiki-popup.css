@@ -175,3 +175,14 @@ input[type='text']::placeholder {
 *:focus {
     outline: none;
 }
+
+.autocomplete-suggestions{
+    right: 10px;
+    border-color: #c30407;
+    max-height: 61px;
+}
+
+.autocomplete-suggestion b{
+    font-weight: bold;
+    color: #c30407;
+}

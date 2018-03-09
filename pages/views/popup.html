@@ -8,9 +8,11 @@
     <title>quiki</title>
 
     <!-- vendor scripts -->
-    <script src="../../vendor/jquery-3.3.1.min.js"></script>
-    <script src="../../vendor/rivets.bundled-0.9.3.min.js"></script>
+    <script src="../../vendor/jquery-3.3.1/jquery-3.3.1.min.js"></script>
+    <script src="../../vendor/rivets-0.9.3/rivets.bundled-0.9.3.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="../../vendor/autoComplete-1.0.4/auto-complete.css" rel="stylesheet">
+    <script src="../../vendor/autoComplete-1.0.4/auto-complete.js"></script>
 
     <!-- custom resources -->
     <link rel="stylesheet" href="../../styles/quiki-popup.css">
@@ -33,9 +35,9 @@
             <a class="default d-block item" href="https://www.diki.pl/dictionary/word-of-the-day?origin=quiki" target='_newtab'>
                 <i class="material-icons">&#xE8DF;</i>&nbsp;&nbsp;Słówko dnia
             </a>
-            <form class="item default-form" target='_newtab' action="https://www.diki.pl/slownik-angielskiego">
+            <form id="diki-form" class="item default-form" target='_newtab' action="https://www.diki.pl/slownik-angielskiego">
                 <div class="input-group">
-                    <input type="text" name="q" autocomplete="off" autofocus placeholder="Wpisz polskie hasło" />
+                    <input id="diki-query" type="text" name="q" autocomplete="off" autofocus placeholder="Wpisz hasło" />
                     <button id="submit-button" type="submit">
                         <i class="material-icons">&#xE8B6;</i>
                     </button>
