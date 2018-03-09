@@ -27,3 +27,10 @@ var dikiAutocomplete = new autoComplete({
         });
     }
 });
+
+// Prevent sending empty request to diki.
+$('#diki-form').on('submit', function(event){
+    if ($('#diki-query').val() === ''){
+        event.preventDefault();
+    }
+});
