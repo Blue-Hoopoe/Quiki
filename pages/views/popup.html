@@ -29,12 +29,6 @@
     <div class="main">
 
         <div class="features component">
-            <a class="default d-block item" href="https://diki.pl?origin=quiki" target='_newtab'>
-                <i class="material-icons">&#xE867;</i>&nbsp;&nbsp;Odwiedź diki.pl
-            </a>
-            <a class="default d-block item" href="https://www.diki.pl/dictionary/word-of-the-day?origin=quiki" target='_newtab'>
-                <i class="material-icons">&#xE8DF;</i>&nbsp;&nbsp;Słówko dnia
-            </a>
             <form id="diki-form" class="item default-form" target='_newtab' action="https://www.diki.pl/slownik-angielskiego">
                 <div class="input-group">
                     <input id="diki-query" type="text" name="q" autocomplete="off" autofocus placeholder="Wpisz hasło" />
@@ -44,6 +38,12 @@
                 </div>
                 <input type="text" name="origin" hidden value="quiki" />
             </form>
+            <a class="default d-block item" href="https://diki.pl?origin=quiki" target='_newtab'>
+                <i class="material-icons">&#xE867;</i>&nbsp;&nbsp;Odwiedź diki.pl
+            </a>
+            <a class="default d-block item" href="https://www.diki.pl/dictionary/word-of-the-day?origin=quiki" target='_newtab'>
+                <i class="material-icons">&#xE8DF;</i>&nbsp;&nbsp;Słówko dnia
+            </a>
         </div>
 
         <div class="settings component">
@@ -51,13 +51,13 @@
                 <tbody>
 
                     <tr rv-each-option="settings">
+                        <td class="label">{ option.label }</td>
                         <td class="option">
                             <label class="switch">
                                 <input id="settings-double-click" type="checkbox" rv-checked="option.value" rv-on-change="option.setValue">
                                 <span class="slider round"></span>
                             </label>
                         </td>
-                        <td class="label">{ option.label }</td>
                     </tr>
 
                 </tbody>

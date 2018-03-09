@@ -63,6 +63,7 @@ a.default:hover {
 }
 
 table.setting-table{
+    border-spacing: 0;
     width: 100%;
 }
 
@@ -75,12 +76,8 @@ table.setting-table > tbody > tr:first-child > td{
 }
 
 table.setting-table td.option{
-    padding-right: 10px;
+    padding-left: 10px;
     width: 1px;
-}
-
-table.setting-table tr{
-    padding-top: 50px;
 }
 
 .no-selection {
@@ -106,7 +103,6 @@ table.setting-table tr{
     right: 0;
     bottom: 0;
     background-color: #ccc;
-    -webkit-transition: .3s;
     transition: .3s;
 }
 
@@ -119,6 +115,14 @@ table.setting-table tr{
     bottom: 4px;
     background-color: white;
     transition: .3s;
+}
+
+.slider.round {
+    border-radius: 8px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
 }
 
 button[type='submit']{
@@ -153,14 +157,6 @@ input:checked+.slider:before {
     transform: translateX(12px);
 }
 
-.slider.round {
-    border-radius: 8px;
-}
-
-.slider.round:before {
-    border-radius: 50%;
-}
-
 input[type='text'] {
     border: 2px solid #c30407;
     padding: 5px;
@@ -179,10 +175,15 @@ input[type='text']::placeholder {
 .autocomplete-suggestions{
     right: 10px;
     border-color: #c30407;
-    max-height: 61px;
+    max-height: 100px;
 }
 
 .autocomplete-suggestion b{
+    font-weight: 400;
+    color: inherit;
+}
+
+.autocomplete-suggestion b:first-of-type{
     font-weight: bold;
     color: #c30407;
 }
