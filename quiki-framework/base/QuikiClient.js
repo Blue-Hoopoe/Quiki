@@ -40,10 +40,17 @@ function QuikiClient() {
 
     // Watches 'esc' press on main window scope (to be continued).
     this.startWatchingKeys = function () {
+
+        // Escape key handler.
         $(document).keydown(function (event) {
             if (event.originalEvent.keyCode == 27){
                 self.removeModal();
             }          
+        });
+
+        // Attaching double click event handler.
+        $('html').on('dblclick', function(event) {
+            self.considerModal(event);
         });
     }
     this.startWatchingKeys();

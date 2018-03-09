@@ -1,5 +1,9 @@
 'use strict';
 
+const urlPatterns = [
+    "http://*/*",
+    "https://*/*",
+];
 const quikiStorageSchema = '1.1';
 const quikiStorageDefault = [{
         'key': 'storage-schema',
@@ -69,10 +73,18 @@ function QuikiService() {
         );
     });
 
-    // Creating context menu.
-    chrome.contextMenus.create({
-        "title": "Wyszukaj \"%s\" na diki.pl",
+    // Creating context menus.\
+/*     chrome.contextMenus.create({
+        "title": "Sprawdź znaczenie \"%s\"",
         "contexts": ["selection"],
+        "documentUrlPatterns": urlPatterns,
+        "onclick": self.test
+    }); */
+
+    chrome.contextMenus.create({
+        "title": "Wyszukaj \"%s\" w nowym oknie diki.pl",
+        "contexts": ["selection"],
+        "documentUrlPatterns": urlPatterns,
         "onclick": self.searchOnDiki
     });
 
