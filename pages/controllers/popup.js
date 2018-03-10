@@ -58,3 +58,10 @@ $(document).ready(function(){
         })
     });
 });
+
+chrome.runtime.sendMessage({
+    'action': 'ga-page',
+    'parameters': {
+        'page': 'popup',
+    }
+});

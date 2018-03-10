@@ -99,6 +99,11 @@ function QuikiService() {
             return {
                 'status': 'ok',
             }
+        } else if (request.action === 'ga-page'){
+            this.qa.pushPage(request.parameters);
+            return {
+                'status': 'ok',
+            }
         }
         return {
             'status': 'exception',
