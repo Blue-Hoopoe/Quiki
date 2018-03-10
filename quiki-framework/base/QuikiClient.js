@@ -37,11 +37,19 @@ function QuikiClient() {
                 }
             });
         }
-
     }
 
     // Creates new modal.
     this.createModal = function (word, event) {
+
+        // Inform quiki analytics.
+        chrome.runtime.sendMessage({
+            'action': 'ga-event',
+            'parameters': {
+                'category': 'quiki-client',
+                'action': 'create-modal',
+            }
+        });
 
         // If modal alredy exsists just change its source.
         if ($('#quiki-modal').length) {

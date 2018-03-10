@@ -47,7 +47,7 @@ function QuikiService() {
     }
 
     this.setLocalValue = function (quikiId, value) {
-        if (quikiId == 'setting-analytics-data'){
+        if (quikiId == 'setting-analytics-data') {
             self.qa.setPrivacyAgreement((String(value) == "true"));
         }
         self.qsm.set(quikiId, value);
@@ -56,6 +56,10 @@ function QuikiService() {
 
     // Context menu on selection function handler.
     this.searchOnDiki = function (event) {
+        self.qa.pushEvent({
+            'category': 'quiki-service',
+            'action': 'word-search',
+        });
         chrome.tabs.create({
             url: "https://www.diki.pl/slownik-angielskiego?origin=quiki&q=" + event.selectionText,
         });
@@ -63,6 +67,10 @@ function QuikiService() {
 
     // Sends modal request to active tab.
     this.sendModalRequest = function (event) {
+        self.qa.pushEvent({
+            'category': 'quiki-service',
+            'action': 'modal-request',
+        });
         chrome.tabs.query({
             active: true,
             currentWindow: true
@@ -86,8 +94,8 @@ function QuikiService() {
                 'status': 'ok',
                 'value': self.setLocalValue(request.quikiId, request.value)
             };
-        } else if (request.action === 'ganalyze') {
-
+        } else if (request.action === 'ga-event') {
+            this.qa.pushEvent(request.parameters);
             return {
                 'status': 'ok',
             }
