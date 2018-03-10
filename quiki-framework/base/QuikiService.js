@@ -41,6 +41,19 @@ function QuikiService() {
         });
     }
 
+    // Sends modal request to active tab.
+    this.sendModalRequest = function (event) {
+        chrome.tabs.query({
+            active: true,
+            currentWindow: true
+        }, function (tabs) {
+            chrome.tabs.sendMessage(tabs[0].id, {
+                action: "considerModal",
+                parameters: event,
+            });
+        });
+    }
+
     // Creating router functions.
     this.getLocalValue = function (quikiId) {
         return self.qsm.get(quikiId);
@@ -73,16 +86,16 @@ function QuikiService() {
         );
     });
 
-    // Creating context menus.\
-/*     chrome.contextMenus.create({
+    // Creating context menus.
+    chrome.contextMenus.create({
         "title": "Sprawdź znaczenie \"%s\"",
         "contexts": ["selection"],
         "documentUrlPatterns": urlPatterns,
-        "onclick": self.test
-    }); */
+        "onclick": self.sendModalRequest
+    });
 
     chrome.contextMenus.create({
-        "title": "Wyszukaj \"%s\" w nowym oknie diki.pl",
+        "title": "Wyszukaj \"%s\" w nowym oknie",
         "contexts": ["selection"],
         "documentUrlPatterns": urlPatterns,
         "onclick": self.searchOnDiki

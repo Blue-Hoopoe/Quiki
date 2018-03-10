@@ -4,10 +4,23 @@ function QuikiClient() {
 
     var self = this;
 
+    // Returns user selection.
+    this.getWindowSelection = function () {
+        return window.getSelection().toString();
+    }
+
     // Checks if modal should be displayed.
     this.considerModal = function (event) {
-        var word = window.getSelection().toString().trim();
-        if ($('#quiki-modal').length || !word || /^$|\s+/.test(word)) {
+
+        // Create query word from given event or window selection.
+        var word = this.getWindowSelection();
+        if (event.selectionText) {
+            word = event.selectionText;
+        }
+        word = word.trim();
+
+        // Check if word is not empty or whitespace.
+        if (!word || !/.*\S.*/.test(word)) {
             return;
         }
 
@@ -16,7 +29,7 @@ function QuikiClient() {
             action: "get",
             quikiId: "setting-doubleclick-modal"
         }, function (response) {
-            if((String(response.value) == "true")){
+            if ((String(response.value) == "true")) {
                 self.createModal(word, event);
             }
         });
@@ -24,9 +37,16 @@ function QuikiClient() {
 
     // Creates new modal.
     this.createModal = function (word, event) {
-        $('html').addClass('quiki-presenting');
-        var $modal = $('<div id="quiki-modal"><div id="quiki-iframe-wrap"><div id="quiki-x"><span>&times;</span> Zamknij okno</div><iframe src="https://www.diki.pl/slownik-angielskiego?q=' + word + '&origin=quiki" frameborder="0"></iframe></div><div id="quiki-poke"></div></div>').appendTo('body');
-        var $iframe = $modal.find('iframe').first();
+
+        // If modal alredy exsists just change its source.
+        if ($('#quiki-modal').length) {
+            $('#quiki-modal').find('iframe').first().attr('src', 'https://www.diki.pl/slownik-angielskiego?q=' + word + '&origin=quiki');
+        } else {
+            $('html').addClass('quiki-presenting');
+            var $modal = $('<div id="quiki-modal"><div id="quiki-iframe-wrap"><div id="quiki-x"><span>&times;</span> Zamknij okno</div><iframe src="https://www.diki.pl/slownik-angielskiego?q=' + word + '&origin=quiki" frameborder="0"></iframe></div><div id="quiki-poke"></div></div>').appendTo('body');
+            var $iframe = $modal.find('iframe').first();
+        }
+
         $('#quiki-poke, #quiki-x').on('click', function () {
             self.removeModal();
         });
@@ -43,16 +63,21 @@ function QuikiClient() {
 
         // Escape key handler.
         $(document).keydown(function (event) {
-            if (event.originalEvent.keyCode == 27){
+            if (event.originalEvent.keyCode == 27) {
                 self.removeModal();
-            }          
+            }
         });
 
         // Attaching double click event handler.
-        $('html').on('dblclick', function(event) {
+        $('html').on('dblclick', function (event) {
             self.considerModal(event);
         });
     }
     this.startWatchingKeys();
+
+    // Create listener.
+    chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+        self[request.action](request.parameters);
+    });
 
 }
