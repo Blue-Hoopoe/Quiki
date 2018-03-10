@@ -24,15 +24,20 @@ function QuikiClient() {
             return;
         }
 
-        // Check if global modal setting is on.
-        chrome.runtime.sendMessage({
-            action: "get",
-            quikiId: "setting-doubleclick-modal"
-        }, function (response) {
-            if ((String(response.value) == "true")) {
-                self.createModal(word, event);
-            }
-        });
+        // Check if global modal setting is on or just fire modal if event is sent from background page.
+        if (event.selectionText) {
+            self.createModal(word, event);
+        } else {
+            chrome.runtime.sendMessage({
+                action: "get",
+                quikiId: "setting-doubleclick-modal"
+            }, function (response) {
+                if ((String(response.value) == "true")) {
+                    self.createModal(word, event);
+                }
+            });
+        }
+
     }
 
     // Creates new modal.
