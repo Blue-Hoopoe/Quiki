@@ -1,23 +1,30 @@
 'use strict';
 
-const urlPatterns = [
-    "http://*/*",
-    "https://*/*",
-];
 const quikiStorageSchema = '1.1';
 const quikiStorageDefault = [{
         'key': 'storage-schema',
-        'value': quikiStorageSchema
+        'value': quikiStorageSchema,
     },
     {
         'key': 'setting-doubleclick-modal',
-        'value': true
+        'value': true,
+    },
+    {
+        'key': 'setting-analytics-data',
+        'value': false,
     }
+];
+const urlPatterns = [
+    "http://*/*",
+    "https://*/*",
 ];
 
 function QuikiService() {
 
     var self = this;
+
+    // Adding optional Google Analytics code.
+    this.qa = new QuikiAnalytics();
 
     // Create storage manager.
     this.qsm = new QuikiStorageManager();
@@ -32,6 +39,19 @@ function QuikiService() {
     if (!storageSchema || storageSchema != quikiStorageSchema) {
         this.qsm.clear();
         this.setDefaultStorage();
+    }
+
+    // Creating router functions.
+    this.getLocalValue = function (quikiId) {
+        return self.qsm.get(quikiId);
+    }
+
+    this.setLocalValue = function (quikiId, value) {
+        if (quikiId == 'setting-analytics-data'){
+            self.qa.setPrivacyAgreement((String(value) == "true"));
+        }
+        self.qsm.set(quikiId, value);
+        return value;
     }
 
     // Context menu on selection function handler.
@@ -54,16 +74,6 @@ function QuikiService() {
         });
     }
 
-    // Creating router functions.
-    this.getLocalValue = function (quikiId) {
-        return self.qsm.get(quikiId);
-    }
-
-    this.setLocalValue = function (quikiId, value) {
-        self.qsm.set(quikiId, value);
-        return value;
-    }
-
     // Creating request router.
     this.route = function (request, sender) {
         if (request.action === 'get') {
@@ -76,6 +86,16 @@ function QuikiService() {
                 'status': 'ok',
                 'value': self.setLocalValue(request.quikiId, request.value)
             };
+        } else if (request.action === 'ganalyze') {
+
+            return {
+                'status': 'ok',
+            }
+        }
+        return {
+            'status': 'exception',
+            'msg': 'There is no exsisting route that can be fired with this request.',
+            'request': request,
         }
     }
 
@@ -100,5 +120,8 @@ function QuikiService() {
         "documentUrlPatterns": urlPatterns,
         "onclick": self.searchOnDiki
     });
+
+    // Passing local private policy settings.
+    this.qa.setPrivacyAgreement((String(this.getLocalValue('setting-analytics-data')) == "true"));
 
 }
