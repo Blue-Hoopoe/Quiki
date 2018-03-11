@@ -3,9 +3,9 @@
     "name": "quiki",
     "short_name": "quiki",
     "homepage_url": "https://github.com/Blue-Hoopoe/quiki",
-    "description": "Nieoficjalny dodatek korzystający z angielsko-polskiego słownika diki.pl. Uwaga: jest to wersja alpha.",
-    "version": "0.5.3",
-    "version_name": "0.5.3 (alpha)",
+    "description": "Nieoficjalny dodatek ułatwiający korzystanie z angielsko-polskiego słownika diki.pl.",
+    "version": "0.5.31",
+    "version_name": "0.5.31 (alpha)",
     "author": [{
         "name": "Maciej Dudek",
         "a.k.a.": "Blue-Hoopoe",
