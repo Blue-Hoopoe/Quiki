@@ -42,12 +42,19 @@ $('#diki-form').on('submit', function(event){
 
 // Attach qa (quki analytics) events.
 $(document).ready(function(){
+    
+    chrome.runtime.sendMessage({
+        'action': 'ga-page',
+        'parameters': {
+            'page': 'popup',
+        }
+    });
+
     $('[qa-event]').each(function(i, element){
         var $this = $(element);
         $this.on($this.attr('qa-event'), function(e){
             var $this = $(this);
             var value = $this.attr('qa-value');
-            console.log($this.attr('qa-action') + (value ? '-' + value : ''))
             chrome.runtime.sendMessage({
                 'action': 'ga-event',
                 'parameters': {
@@ -57,11 +64,4 @@ $(document).ready(function(){
             });
         })
     });
-});
-
-chrome.runtime.sendMessage({
-    'action': 'ga-page',
-    'parameters': {
-        'page': 'popup',
-    }
 });

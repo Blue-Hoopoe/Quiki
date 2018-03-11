@@ -10,10 +10,10 @@ function QuikiClient() {
     }
 
     // Checks if modal should be displayed.
-    this.considerModal = function (event) {
+    this.considerModal = function (event, origin = 'background') {
 
         // Create query word from given event or window selection.
-        var word = this.getWindowSelection();
+        var word = self.getWindowSelection();
         if (event.selectionText) {
             word = event.selectionText;
         }
@@ -25,7 +25,7 @@ function QuikiClient() {
         }
 
         // Check if global modal setting is on or just fire modal if event is sent from background page.
-        if (event.selectionText) {
+        if (origin != 'self') {
             self.createModal(word, event);
         } else {
             chrome.runtime.sendMessage({
@@ -83,7 +83,7 @@ function QuikiClient() {
 
         // Attaching double click event handler.
         $('html').on('dblclick', function (event) {
-            self.considerModal(event);
+            self.considerModal(event, 'self');
         });
     }
     this.startWatchingKeys();

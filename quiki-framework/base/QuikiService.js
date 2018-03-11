@@ -77,7 +77,7 @@ function QuikiService() {
         }, function (tabs) {
             chrome.tabs.sendMessage(tabs[0].id, {
                 action: "considerModal",
-                parameters: event,
+                parameters: event ? event : {},
             });
         });
     }
@@ -117,6 +117,12 @@ function QuikiService() {
         sendResponse(
             self.route(request, sender)
         );
+    });
+
+    chrome.commands.onCommand.addListener(function(command) {
+        try{
+            self[command]();
+        }catch(e){}
     });
 
     // Creating context menus.

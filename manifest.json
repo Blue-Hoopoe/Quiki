@@ -56,6 +56,12 @@
                 "default": "Ctrl+Q"
             },
             "description": "Włącz/wyłącz okienko dodatku."
+        },
+        "sendModalRequest": {
+            "suggested_key": {
+                "default": "Alt+Q"
+            },
+            "description": "Wyszukaj zaznaczone słowo na aktywnej karcie."
         }
     },
     "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'"
