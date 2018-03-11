@@ -5,7 +5,7 @@ rivets.bind($('#popup'), {
     settings: [
         new QuikiInput({
             'quikiId': 'setting-analytics-data',
-            'label': 'Ulepszaj quiki wysyłająć anonimowe informacje',
+            'label': 'Ulepszaj quiki wysyłając anonimowe informacje',
             'type': 'checkbox',
         }),
         new QuikiInput({
