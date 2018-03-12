@@ -4,8 +4,8 @@
     "short_name": "quiki",
     "homepage_url": "https://github.com/Blue-Hoopoe/quiki",
     "description": "Nieoficjalny dodatek ułatwiający korzystanie z angielsko-polskiego słownika diki.pl.",
-    "version": "0.5.34",
-    "version_name": "0.5.34 (alpha)",
+    "version": "0.5.35",
+    "version_name": "0.5.35 (alpha)",
     "author": [{
         "name": "Maciej Dudek",
         "a.k.a.": "Blue-Hoopoe",
@@ -53,7 +53,8 @@
     "commands": {
         "_execute_browser_action": {
             "suggested_key": {
-                "default": "Ctrl+Q"
+                "default": "Ctrl+Q",
+                "mac": "Alt+Shift+Q"
             },
             "description": "Włącz/wyłącz okienko dodatku."
         },

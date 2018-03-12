@@ -13,8 +13,8 @@ Przede wszystkim - uprości życie. Ażeby nie być gołosłownym, oto kilka jeg
 * automatyczne szukanie słowa przy podwójnym kliknięciu na wyraz,
 * podręczne menu z wyszukiwarką, linkami do strony [*diki.pl*](https://www.diki.pl/) oraz opcjami,
 * przydatne skróty klawiszowe:
-    * `Ctrl + Q` - włącza lub wyłącza okienko dodatku quiki,
-    * `Alt + Q` - wyszukuje zaznaczony tekst na obecnej karcie,
+    * `Ctrl+Q` (lub `Alt+Shift+Q` na urządzeniach *macOS*) - włącza lub wyłącza okienko dodatku quiki,
+    * `Alt+Q` - wyszukuje zaznaczony tekst na obecnej karcie,
 * menu kontesktowe przy zaznaczeniu tesktu,
 
 ## Jak wygląda instalacja?
