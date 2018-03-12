@@ -61,7 +61,7 @@ function QuikiClient() {
                     <div id="quiki-iframe-wrap">\
                     <div id="quiki-x"><span>&times;</span> Zamknij okno</div>\
                     <div class="quiki-spinner"></div>\
-                    <iframe src="https://www.diki.pl/slownik-angielskiego?q=` + word + `&origin=quiki" frameborder="0"></iframe>\
+                    <iframe src="https://www.diki.pl/slownik-angielskiego?q=' + word + '&origin=quiki" frameborder="0"></iframe>\
                     </div>\
                     <div id="quiki-poke"></div>\
                 </div>\
