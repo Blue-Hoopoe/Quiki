@@ -72,3 +72,32 @@ html.quiki-presenting{
 #quiki-modal > iframe #thinHeaderMenuIcon{
     padding: 10px !important;
 }
+
+.quiki-spinner {
+    border: 5px solid rgb(195, 4, 7);;
+    border-radius: 40px;
+    width: 40px;
+    height: 40px;
+    top: 50%;
+    left: 50%;
+    margin: -20px 0 0 -20px;
+    opacity: 0;
+    position: absolute;
+ 
+    animation: pulsate 1.1s ease-out;
+    animation-iteration-count: infinite;
+}
+
+@keyframes pulsate {
+    0% {
+      transform: scale(0);
+      opacity: 0.0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1.2);
+      opacity: 0;
+    }
+}
