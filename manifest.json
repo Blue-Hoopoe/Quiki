@@ -4,8 +4,8 @@
     "short_name": "quiki",
     "homepage_url": "https://chrome.google.com/webstore/detail/quiki/mebpcboihmmimfdegaipbhnhoiaghpmc",
     "description": "Nieoficjalny dodatek ułatwiający korzystanie z angielsko-polskiego słownika diki.pl.",
-    "version": "0.5.36",
-    "version_name": "0.5.36 (alpha)",
+    "version": "0.5.37",
+    "version_name": "0.5.37 (alpha)",
     "author": [{
         "name": "Maciej Dudek",
         "a.k.a.": "Blue-Hoopoe",
@@ -50,6 +50,7 @@
     "permissions": [
         "contextMenus"
     ],
+    "incognito": "spanning",
     "commands": {
         "_execute_browser_action": {
             "suggested_key": {

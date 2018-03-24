@@ -23,7 +23,7 @@
 <body id="popup">
 
     <div class="top">
-        <a href="https://github.com/Blue-Hoopoe/quiki" target='_newtab'>
+        <a href="https://github.com/Blue-Hoopoe/quiki" quiki-target='_newtab' quiki-href>
             <img id="logo" src="../../icons/icon_512.png" alt="" />
         </a>
     </div>
@@ -31,7 +31,7 @@
     <div class="main">
 
         <div class="features component">
-            <form id="diki-form" class="item default-form" target='_newtab' action="https://www.diki.pl/slownik-angielskiego" qa-event="submit" qa-category="popup" qa-action="word-search">
+            <form id="diki-form" class="item default-form" quiki-target='_newtab' quiki-form action="https://www.diki.pl/slownik-angielskiego" qa-event="submit" qa-category="popup" qa-action="word-search">
                 <div class="input-group">
                     <input id="diki-query" type="text" name="q" autocomplete="off" autofocus placeholder="Wpisz hasło" />
                     <button id="submit-button" type="submit">
@@ -40,10 +40,10 @@
                 </div>
                 <input type="text" name="origin" hidden value="quiki" />
             </form>
-            <a class="default d-block item" href="https://diki.pl?origin=quiki" target='_newtab' qa-event="click" qa-category="popup" qa-action="go-to-diki">
+            <a class="default d-block item" href="https://diki.pl?origin=quiki" quiki-target='_newtab' quiki-href qa-event="click" qa-category="popup" qa-action="go-to-diki">
                 <i class="material-icons">&#xE867;</i>&nbsp;&nbsp;Odwiedź diki.pl
             </a>
-            <a class="default d-block item" href="https://www.diki.pl/dictionary/word-of-the-day?origin=quiki" qa-event="click" target='_newtab' qa-event qa-category="popup" qa-action="go-to-dayily-word">
+            <a class="default d-block item" href="https://www.diki.pl/dictionary/word-of-the-day?origin=quiki" qa-event="click" quiki-target='_newtab' quiki-href qa-event qa-category="popup" qa-action="go-to-dayily-word">
                 <i class="material-icons">&#xE8DF;</i>&nbsp;&nbsp;Słówko dnia
             </a>
         </div>

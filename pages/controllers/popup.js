@@ -50,8 +50,8 @@ $(document).ready(function(){
         }
     });
 
-    $('[qa-event]').each(function(i, element){
-        var $this = $(element);
+    $('[qa-event]').each(function(){
+        var $this = $(this);
         $this.on($this.attr('qa-event'), function(e){
             var $this = $(this);
             var value = $this.attr('qa-value');
@@ -64,4 +64,27 @@ $(document).ready(function(){
             });
         })
     });
+});
+
+// Create custom new tab linking logic...
+$('[quiki-href]').on('click', function(event){
+    chrome.tabs.create({
+        url: $(this).attr('href'),
+    });
+    return false;
+});
+
+//...and custom new tab form.
+$('[quiki-form]').on('submit', function(event){
+    var $this = $(this);
+    var $url = $this.attr('action') + '?';
+
+    $this.find('input, textarea').each(function(){
+        $url += '&' + $(this).attr('name') + '=' + $(this).val();
+    });
+
+    chrome.tabs.create({
+        url: $url,
+    });
+    return false;
 });
