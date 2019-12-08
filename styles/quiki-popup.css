@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&subset=latin-ext');
+
 html,
 body {
     padding: 0;
     margin: 0;
     min-width: 200px;
     min-height: 150px;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 13px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 12px;
     color: #333;
-    line-height: 1.3;
+        line-height: 1.3;
 }
 
 body {
@@ -22,7 +23,7 @@ a:link,
 a:visited {
     text-decoration: none;
     color: inherit;
-    transition: color .3s ease-in-out;
+    transition: color 0.3s ease-in-out;
 }
 
 a.default:hover {
@@ -52,7 +53,7 @@ a.default:hover {
     border-top: 1px solid rgba(238, 238, 238, 0.5);
 }
 
-.component>.item {
+.component > .item {
     padding: 5px 0;
     box-sizing: border-box;
 }
@@ -62,20 +63,20 @@ a.default:hover {
     font-size: 10px;
 }
 
-table.setting-table{
+table.setting-table {
     border-spacing: 0;
     width: 100%;
 }
 
-table.setting-table > tbody > tr > td{
+table.setting-table > tbody > tr > td {
     padding-top: 10px;
 }
 
-table.setting-table > tbody > tr:first-child > td{
+table.setting-table > tbody > tr:first-child > td {
     padding-top: 0;
 }
 
-table.setting-table td.option{
+table.setting-table td.option {
     padding-left: 10px;
     width: 1px;
 }
@@ -103,7 +104,7 @@ table.setting-table td.option{
     right: 0;
     bottom: 0;
     background-color: #ccc;
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .slider:before {
@@ -114,7 +115,7 @@ table.setting-table td.option{
     left: 4px;
     bottom: 4px;
     background-color: white;
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .slider.round {
@@ -125,46 +126,50 @@ table.setting-table td.option{
     border-radius: 50%;
 }
 
-button[type='submit']{
+button[type="submit"] {
     cursor: pointer;
 }
 
-.input-group{
+.input-group {
     display: flex;
     flex-direction: row;
 }
 
-.input-group button{
+.input-group button {
     border: none;
     background-color: #c30407;
     color: #fff;
     padding: 0 5px;
+    border-radius: 0 3px 3px 0;
+    border: 2px solid #c30407;
+    border-left: 0;
 }
 
-.input-group .material-icons{
+.input-group .material-icons {
     font-size: 1.3em;
 }
 
-input:checked+.slider {
+input:checked + .slider {
     background-color: #c30407;
 }
 
-input:focus+.slider {
+input:focus + .slider {
     box-shadow: 0 0 1px #c30407;
 }
 
-input:checked+.slider:before {
+input:checked + .slider:before {
     transform: translateX(12px);
 }
 
-input[type='text'] {
+input[type="text"] {
     border: 2px solid #c30407;
     padding: 5px;
     width: 100%;
     box-sizing: border-box;
+    border-radius: 3px 0 0 3px;
 }
 
-input[type='text']::placeholder {
+input[type="text"]::placeholder {
     opacity: 0.5;
 }
 
@@ -172,18 +177,18 @@ input[type='text']::placeholder {
     outline: none;
 }
 
-.autocomplete-suggestions{
+.autocomplete-suggestions {
     right: 10px;
     border-color: #c30407;
     max-height: 100px;
 }
 
-.autocomplete-suggestion b{
+.autocomplete-suggestion b {
     font-weight: 400;
     color: inherit;
 }
 
-.autocomplete-suggestion b:first-of-type{
+.autocomplete-suggestion b:first-of-type {
     font-weight: bold;
     color: #c30407;
 }
