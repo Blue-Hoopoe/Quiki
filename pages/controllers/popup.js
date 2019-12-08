@@ -1,13 +1,8 @@
 'use strict';
 
 // Bind all data to the view.
-rivets.bind($('#popup'), {
+rivets.bind(document.querySelector('#popup') , {
     settings: [
-        new QuikiInput({
-            'quikiId': 'setting-analytics-data',
-            'label': 'Ulepszaj quiki wysyłając anonimowe informacje',
-            'type': 'checkbox',
-        }),
         new QuikiInput({
             'quikiId': 'setting-doubleclick-modal',
             'label': 'Szukaj definicji przy podwójnym kliknięciu',
@@ -22,69 +17,59 @@ var dikiAutocomplete = new autoComplete({
     minChars: 2,
     cache: true,
     source: function (query, response) {
-        try{ xhr.abort(); } catch(e){}
-        $.getJSON('https://www.diki.pl/dictionary/autocomplete', {
+        
+        // Create an endpoint.
+        const endpoint = new URL('https://www.diki.pl/dictionary/autocomplete');
+        endpoint.search = new URLSearchParams({
             q: query,
             langpair: 'en::pl',
             origin: 'quiki',
-        }, function (data) {
-            response(data);
         });
+
+        // Retrieve a data fron endpoint.
+        fetch(endpoint)
+            .then(data => data.json())
+            .then(response);
     }
 });
 
 // Prevent sending empty request to diki.
-$('#diki-form').on('submit', function(event){
-    if ($('#diki-query').val() === ''){
+document.querySelector('#diki-form').addEventListener('submit', function(event){
+    const query = document.querySelector('#diki-query').value;
+    if (query === ''){
         event.preventDefault();
     }
 });
 
-// Attach qa (quki analytics) events.
-$(document).ready(function(){
-    
-    chrome.runtime.sendMessage({
-        'action': 'ga-page',
-        'parameters': {
-            'page': 'popup',
-        }
-    });
-
-    $('[qa-event]').each(function(){
-        var $this = $(this);
-        $this.on($this.attr('qa-event'), function(e){
-            var $this = $(this);
-            var value = $this.attr('qa-value');
-            chrome.runtime.sendMessage({
-                'action': 'ga-event',
-                'parameters': {
-                    'category': $this.attr('qa-category'),
-                    'action': $this.attr('qa-action') + (value ? '-' + value : ''),
-                }
-            });
-        })
-    });
-});
-
 // Create custom new tab linking logic...
-$('[quiki-href]').on('click', function(event){
-    chrome.tabs.create({
-        url: $(this).attr('href'),
+document.querySelectorAll('[quiki-href]').forEach(el => {
+    el.addEventListener('click', (event) => {
+        chrome.tabs.create({
+            url: el.getAttribute('href'),
+        });
+        event.preventDefault();
     });
-    return false;
 });
 
 //...and custom new tab form.
-$('[quiki-form]').on('submit', function(event){
-    var $this = $(this);
-    var $url = $this.attr('action') + '?';
+document.querySelector('[quiki-form]').addEventListener('submit', function(event){
+    event.preventDefault();
 
-    $this.find('input, textarea').each(function(){
-        $url += '&' + $(this).attr('name') + '=' + $(this).val();
+    // Create a dynamic endpoint.
+    const params = new URLSearchParams();
+
+    // Retrieve data from form.
+    this.querySelectorAll('input, textarea').forEach(function (inputable) {
+        params.append(
+            inputable.getAttribute('name'),
+            inputable.value
+        );
     });
+    const endpoint = new URL(this.getAttribute('action'));
+    endpoint.search = params;
 
+    // Open desired enpoint in new chrome tab.
     chrome.tabs.create({
-        url: $url,
+        url: endpoint.toString(),
     });
-    return false;
 });

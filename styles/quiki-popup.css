@@ -7,9 +7,9 @@ body {
     min-width: 200px;
     min-height: 150px;
     font-family: "Open Sans", sans-serif;
-    font-size: 12px;
+    font-size: 11px;
     color: #333;
-        line-height: 1.3;
+    line-height: 1.3;
 }
 
 body {
@@ -60,7 +60,7 @@ a.default:hover {
 
 .settings {
     color: #666;
-    font-size: 10px;
+    font-size: 9px;
 }
 
 table.setting-table {

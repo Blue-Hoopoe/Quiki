@@ -9,10 +9,6 @@ const quikiStorageDefault = [{
         'key': 'setting-doubleclick-modal',
         'value': true,
     },
-    {
-        'key': 'setting-analytics-data',
-        'value': false,
-    }
 ];
 const urlPatterns = [
     "http://*/*",
@@ -22,9 +18,6 @@ const urlPatterns = [
 function QuikiService() {
 
     var self = this;
-
-    // Adding optional Google Analytics code.
-    this.qa = new QuikiAnalytics();
 
     // Create storage manager.
     this.qsm = new QuikiStorageManager();
@@ -47,19 +40,12 @@ function QuikiService() {
     }
 
     this.setLocalValue = function (quikiId, value) {
-        if (quikiId == 'setting-analytics-data') {
-            self.qa.setPrivacyAgreement((String(value) == "true"));
-        }
         self.qsm.set(quikiId, value);
         return value;
     }
 
     // Context menu on selection function handler.
     this.searchOnDiki = function (event) {
-        self.qa.pushEvent({
-            'category': 'quiki-service',
-            'action': 'word-search',
-        });
         chrome.tabs.create({
             url: "https://www.diki.pl/slownik-angielskiego?origin=quiki&q=" + event.selectionText,
         });
@@ -67,10 +53,6 @@ function QuikiService() {
 
     // Sends modal request to active tab.
     this.sendModalRequest = function (event) {
-        self.qa.pushEvent({
-            'category': 'quiki-service',
-            'action': 'modal-request',
-        });
         chrome.tabs.query({
             active: true,
             currentWindow: true
@@ -94,16 +76,6 @@ function QuikiService() {
                 'status': 'ok',
                 'value': self.setLocalValue(request.quikiId, request.value)
             };
-        } else if (request.action === 'ga-event') {
-            this.qa.pushEvent(request.parameters);
-            return {
-                'status': 'ok',
-            }
-        } else if (request.action === 'ga-page'){
-            this.qa.pushPage(request.parameters);
-            return {
-                'status': 'ok',
-            }
         }
         return {
             'status': 'exception',
@@ -139,8 +111,4 @@ function QuikiService() {
         "documentUrlPatterns": urlPatterns,
         "onclick": self.searchOnDiki
     });
-
-    // Passing local private policy settings.
-    this.qa.setPrivacyAgreement((String(this.getLocalValue('setting-analytics-data')) == "true"));
-
 }

@@ -29,8 +29,8 @@ function QuikiClient() {
             self.createModal(word, event);
         } else {
             chrome.runtime.sendMessage({
-                action: "get",
-                quikiId: "setting-doubleclick-modal"
+                action: 'get',
+                quikiId: 'setting-doubleclick-modal'
             }, function (response) {
                 if ((String(response.value) == "true")) {
                     self.createModal(word, event);
@@ -42,56 +42,48 @@ function QuikiClient() {
     // Creates new modal.
     this.createModal = function (word, event) {
 
-        // Inform quiki analytics.
-        chrome.runtime.sendMessage({
-            'action': 'ga-event',
-            'parameters': {
-                'category': 'quiki-client',
-                'action': 'create-modal',
-            }
-        });
-
         // If modal alredy exsists just change its source.
-        if ($('#quiki-modal').length) {
-            $('#quiki-modal').find('iframe').first().attr('src', 'https://www.diki.pl/slownik-angielskiego?q=' + word + '&origin=quiki');
+        let modal = document.querySelector('#quiki-modal');
+        if (modal) {
+            modal.querySelector('iframe').setAttribute('src', `https://www.diki.pl/slownik-angielskiego?q=${word}&origin=quiki`);
         } else {
-            $('html').addClass('quiki-presenting');
-            var $modal = $('\
-                <div id="quiki-modal">\
-                    <div id="quiki-iframe-wrap">\
-                    <div id="quiki-x"><span>&times;</span> Zamknij okno</div>\
-                    <div class="quiki-spinner"></div>\
-                    <iframe src="https://www.diki.pl/slownik-angielskiego?q=' + word + '&origin=quiki" frameborder="0"></iframe>\
-                    </div>\
-                    <div id="quiki-poke"></div>\
-                </div>\
-            ').appendTo('body');
-            var $iframe = $modal.find('iframe').first();
+            document.querySelector('html').classList.add('quiki-presenting');
+            document.body.insertAdjacentHTML('beforeend', `
+                <div id="quiki-modal">
+                    <div id="quiki-iframe-wrap">
+                    <div id="quiki-x"><span>&times;</span> Zamknij okno</div>
+                    <div class="quiki-spinner"></div>
+                    <iframe src="https://www.diki.pl/slownik-angielskiego?q=${word}&origin=quiki" frameborder="0"></iframe>
+                    </div>
+                    <div id="quiki-poke"></div>
+                </div>
+            `);
         }
 
-        $('#quiki-poke, #quiki-x').on('click', function () {
-            self.removeModal();
-        });
+        // Listen for overlay click.
+        document.querySelectorAll('#quiki-poke, #quiki-x').forEach(el => {
+            el.addEventListener('click', self.removeModal);
+        })
     }
 
     // Removes exsisting modals.
     this.removeModal = function () {
-        $('#quiki-modal').remove();
-        $('html').removeClass('quiki-presenting');
+        document.querySelector('#quiki-modal').remove();
+        document.querySelector('html').classList.remove('quiki-presenting');
     }
 
     // Watches 'esc' press on main window scope (to be continued).
     this.startWatchingKeys = function () {
 
-        // Escape key handler.
-        $(document).keydown(function (event) {
-            if (event.originalEvent.keyCode == 27) {
+        // "Escape" key handler.
+        document.addEventListener('keydown', function (event) {
+            if (event.keyCode == 27) {
                 self.removeModal();
             }
         });
 
         // Attaching double click event handler.
-        $('html').on('dblclick', function (event) {
+        document.querySelector('html').addEventListener('dblclick', function (event) {
             self.considerModal(event, 'self');
         });
     }
