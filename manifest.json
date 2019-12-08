@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
-    "name": "quiki",
-    "short_name": "quiki",
+    "name": "Quiki",
+    "short_name": "Quiki",
     "homepage_url": "https://chrome.google.com/webstore/detail/quiki/mebpcboihmmimfdegaipbhnhoiaghpmc",
     "description": "Nieoficjalny dodatek ułatwiający korzystanie z angielsko-polskiego słownika diki.pl.",
     "version": "1.0.0",
