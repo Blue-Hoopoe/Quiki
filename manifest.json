@@ -63,5 +63,6 @@
             },
             "description": "Wyszukaj zaznaczone słowo na aktywnej karcie."
         }
-    }
+    },
+    "content_security_policy": "object-src 'self'"
 }
