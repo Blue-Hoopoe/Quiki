@@ -1,4 +1,4 @@
-![Quiki](https://user-images.githubusercontent.com/30572096/70394543-624bb780-19f6-11ea-9e02-955dedacd8b8.jpeg)
+![Quiki](https://user-images.githubusercontent.com/30572096/70866623-27a0cc80-1f6c-11ea-869d-64c7e1135fe8.png)
 
 ## Czym jest *Quiki*?
 *Quiki* to niewielkie rozszerzenie pisane z myślą o przeglądace [*Google Chrome*](https://www.google.pl/chrome/). Pozwala ono na szybsze, łatwiejsze i jeszcze bardziej przyjemne korzystanie ze znakomitego słownika [*diki.pl*](https://www.diki.pl/).
